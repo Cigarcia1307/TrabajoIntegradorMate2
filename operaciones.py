@@ -55,18 +55,33 @@ for i, dni in enumerate(dnis,1):
 
 E = {3, 4, 9, 1, 8, 2}
 F = {4, 6, 7, 2, 8, 1}
-diferencia_simetrica = E.symmetric_difference(F)
-print("E Δ F =", diferencia_simetrica)
+dif_simetrica=set()
+for elemento in E:
+  if elemento not in F:
+      dif_simetrica.add(elemento)
+
+for elemento in F:
+  if elemento not in E:
+      dif_simetrica.add(elemento)
+
+print("E Δ F =", dif_simetrica)
 
 #Los dígitos que aparecen en C, P y F a la vez.
+comunes=set()
 
 C = {3, 2, 4, 9, 6, 5}
 P = {2, 9, 5, 1}
 F = {4, 6, 7, 2, 8, 1}
-interseccion = C & P & F
-print("C ∩ P ∩ F =", interseccion)
+
+for elemento in C:
+   if elemento in P:
+      if elemento in F:
+         comunes.add(elemento)
+
+print("C ∩ P ∩ F =", comunes)
 
 #Si hay más conjuntos con cantidad par de elementos que con cantidad impar, entonces se etiqueta como "grupo par".·    
+
 
 E = {3, 4, 9, 1, 8, 2}
 C = {3, 2, 4, 9, 6, 5}
@@ -74,13 +89,13 @@ H = {3, 7, 5, 9, 6, 4}
 F = {4, 6, 7, 2, 8, 1}
 P = {2, 9, 5, 1}
 
-conjuntos = [("E", E), ("C", C), ("H", H), ("F", F), ("P", P)]
+conjuntos = [("E", E), ("C", C), ("H", H), ("F", F), ("P", P)] #lista de tuplas (investigacion extra)
 
 mayoria_pares = 0
 mayoria_impares = 0
 
-for nombre, conjunto in conjuntos:
-    pares = sum(1 for n in conjunto if n % 2 == 0)
+for nombre, conjunto in conjuntos: #nombre: 'E/ C/ H/ F/ P' , conjunto: {3,4,9,1,8,2}
+    pares = sum(1 for n in conjunto if n % 2 == 0) # sum: funcion nativa que suma 1 cada vez que encuentra un numero par e itera sobre el conjunto
     impares = sum(1 for n in conjunto if n % 2 != 0)
     print(f"Conjunto {nombre}: {pares} pares, {impares} impares")
 
@@ -94,4 +109,4 @@ if mayoria_pares > mayoria_impares:
 elif mayoria_impares > mayoria_pares:
     print("Grupo impar")
 else:
-    print("Igual cantidad de conjuntos con mayoría de pares e impares")
+    print("Igual cantidad de conjuntos con mayoría de pares e impares") 
