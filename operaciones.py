@@ -110,3 +110,73 @@ elif mayoria_impares > mayoria_pares:
     print("Grupo impar")
 else:
     print("Igual cantidad de conjuntos con mayoría de pares e impares") 
+
+
+# Función que verifica si un año es bisiesto
+def es_bisiesto(anio):
+    return (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
+
+def hay_anio_bisiesto(lista_anios):
+    for anio in lista_anios:
+        if es_bisiesto(anio):
+            return True
+    return False
+
+# Ingreso de los años de nacimiento de los hombres del grupo
+print("\nIngreso de años de nacimiento (solo los hombres del grupo):")
+nombres_hombres = ["Fausto Gagliano", "Hernán Dichiara", "Pablo de la Puente"]
+anios_nacimiento = []
+
+for nombre in nombres_hombres:
+    while True:
+        anio_str = input(f"Ingresar el año de nacimiento de {nombre}: ")
+        if not anio_str.isdigit():
+            print("Debe ingresar un número entero positivo.")
+            continue
+        anio = int(anio_str)
+        if anio < 1900 or anio > datetime.now().year:
+            print("Por favor ingrese un año válido.")
+        else:
+            anios_nacimiento.append(anio)
+            break
+
+# Función que cuenta pares e impares de una lista de números
+def contar_pares_impares(lista_numeros):
+    pares = 0
+    impares = 0
+    for num in lista_numeros:
+        if num % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+    return pares, impares
+
+pares, impares = contar_pares_impares(anios_nacimiento)
+print(f"Años pares  : {pares}")
+print(f"Años impares: {impares}")
+
+
+# Función que Verifica si todos nacieron después del 2000
+def es_grupo_z(anios):
+    for anio in anios:
+        if anio <= 2000:
+            return False
+    return True
+
+if es_grupo_z(anios_nacimiento):
+    print("Grupo Z")
+
+# Verificación de año bisiesto
+if hay_anio_bisiesto(anios_nacimiento):
+    print("Tenemos un año especial")
+
+# Calculo de edades actuales
+anio_actual = datetime.now().year
+edades = [anio_actual - anio for anio in anios_nacimiento]
+
+# Producto cartesiano entre años y edades
+print("\nProducto cartesiano entre años y edades:")
+for anio in anios_nacimiento:
+    for edad in edades:
+        print(f"  ({anio}, {edad})")
+  
