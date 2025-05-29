@@ -1,6 +1,8 @@
 from datetime import datetime
 
-print("\nBienvenidos al Trabajo Integrador 2 de Matematica\n")
+print("\n" + "="*50)
+print("Bienvenidos al Trabajo Integrador 2 de Matematica".center(40))
+print("="*50 + "\n")
 
 lista = [ "Integrantes:", "Fausto Gagliano", "Eugenia Demarchi", "Pablo de la Puente", "Hernan Dichiara", "Cintia Garcia"]
 ancho_maximo = max(len(nombre) for nombre in lista)
@@ -153,6 +155,10 @@ def contar_pares_impares(lista_numeros):
             impares += 1
     return pares, impares
 
+
+print("\n" + "="*40)
+print("Análisis de Años de Nacimiento".center(40))
+print("="*40)
 pares, impares = contar_pares_impares(anios_nacimiento)
 print(f"Años pares  : {pares}")
 print(f"Años impares: {impares}")
@@ -177,7 +183,9 @@ anio_actual = datetime.now().year
 edades = [anio_actual - anio for anio in anios_nacimiento]
 
 # Producto cartesiano entre años y edades
-print("\nProducto cartesiano entre años y edades:")
+print("\n" + "="*40)
+print("Producto cartesiano entre años y edades".center(40))
+print("="*40)
 for anio in anios_nacimiento:
     for edad in edades:
         print(f"  ({anio}, {edad})")
