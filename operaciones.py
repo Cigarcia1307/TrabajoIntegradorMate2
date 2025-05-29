@@ -1,3 +1,5 @@
+from datetime import datetime
+
 print("\nBienvenidos al Trabajo Integrador 2 de Matematica\n")
 
 lista = [ "Integrantes:", "Fausto Gagliano", "Eugenia Demarchi", "Pablo de la Puente", "Hernan Dichiara", "Cintia Garcia"]
